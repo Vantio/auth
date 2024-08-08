@@ -21,10 +21,10 @@ function signIn() {
   }
 
   if (isCorrectEmailAndPassword(loginEmail, loginPassword)) {
-    window.location.href = "home.html";
+    window.location.href = "welcome.html";
   } else {
     swal({
-      text: "Incorrect email or password",
+      text: "Incorrect ID or password",
     });
   }
 }
