@@ -44,5 +44,5 @@ loginBtn.addEventListener("click", function () {
 });
 
 signupAnchor.addEventListener("click", function () {
-  window.location.href = "signup.html";
+  window.location.href = "https://vantio.uk/profile";
 });
