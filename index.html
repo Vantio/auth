@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Account Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const englishText = {
+                title: "Artist Account Information",
+                description: "Logging in is for artists only. If you are an artist, go to the login page. If not, you can return to the home page.",
+                homepage: "Homepage",
+                login: "Artist Login",
+                createAccount: "Create Artist Account",
+                popupMessage: "New artists are no longer accepted. Please email pmr@samthepianoman.co.uk."
+            };
+
+            const dutchText = {
+                title: "Informatie over artiestenaccounts",
+                description: "Inloggen is uitsluitend voor artiesten. Bent u een artiest, ga dan naar de inlogpagina. Als dit niet het geval is, kunt u terugkeren naar de startpagina.",
+                homepage: "Startpagina",
+                login: "Artiest Inloggen",
+                createAccount: "Artiest Account Aanmaken",
+                popupMessage: "Nieuwe artiesten worden niet meer geaccepteerd. Stuur een e-mail naar pmr@samthepianoman.co.uk."
+            };
+
+            function toggleLanguage() {
+                const isEnglish = document.getElementById('language-toggle').checked;
+                const text = isEnglish ? englishText : dutchText;
+
+                document.getElementById('title').innerText = text.title;
+                document.getElementById('description').innerText = text.description;
+                document.getElementById('homepage-text').innerText = text.homepage;
+                document.getElementById('login-text').innerText = text.login;
+                document.getElementById('createAccount-text').innerText = text.createAccount;
+                document.getElementById('popupMessage').innerText = text.popupMessage;
+
+                // Move the slider dot
+                const dot = document.querySelector('.dot');
+                if (isEnglish) {
+                    dot.classList.remove('translate-x-full');
+                } else {
+                    dot.classList.add('translate-x-full');
+                }
+            }
+
+            document.getElementById('language-toggle').addEventListener('change', toggleLanguage);
+
+            function showPopup() {
+                alert(document.getElementById('popupMessage').innerText);
+            }
+
+            document.getElementById('createAccount').addEventListener('click', showPopup);
+        });
+    </script>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <div class="min-h-screen flex flex-col justify-center items-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+            <div class="flex justify-end mb-4">
+                <label class="flex items-center cursor-pointer">
+                    <span class="mr-2">EN</span>
+                    <input type="checkbox" id="language-toggle" class="hidden">
+                    <div class="relative">
+                        <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
+                        <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform"></div>
+                    </div>
+                    <span class="ml-2">NL</span>
+                </label>
+            </div>
+            <h1 id="title" class="text-2xl font-bold mb-4 text-center">Artist Account Information</h1>
+            <p id="description" class="text-gray-700 mb-6 text-center">
+                Logging in is exclusively for artists. If you are an artist, please proceed to the login page. If not, you can return to the homepage.
+            </p>
+            <div class="flex justify-center space-x-4 mb-4">
+                <a id="homepage" href="https://vantio.uk/" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">
+                    <i class="fas fa-home mr-2"></i><span id="homepage-text">Homepage</span>
+                </a>
+                <a id="login" href="https://vantio.uk/auth/portal/" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200">
+                    <i class="fas fa-sign-in-alt mr-2"></i><span id="login-text">Artist Login</span>
+                </a>
+            </div>
+            <div class="flex justify-center">
+                <button id="createAccount" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-200">
+                    <i class="fas fa-user-plus mr-2"></i><span id="createAccount-text">Create Artist Account</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="popupMessage" class="hidden">New artists are no longer accepted. Please email pmr@samthepianoman.co.uk.</div>
+</body>
+</html>
